@@ -1,0 +1,58 @@
+<section class="container mt-5">
+  <h1>Danh sách người dùng</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Tên tài khoản</th>
+        <th scope="col">Họ và tên </th>
+        <th scope="col">Địa chỉ</th>
+        <th scope="col">Thao tác</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <% const users=data.users %>
+        <% users.forEach(function(user) { %>
+          <tr>
+            <th scope="row">
+              <%= user.id %>
+            </th>
+            <td>
+              <%= user.username %>
+            </td>
+            <td>
+              <%= user.fullname %>
+            </td>
+            <td>
+              <%= user.address %>
+            </td>
+            <td>
+              <a href=""><i class="fa-solid fa-pen-to-square"></i></a>
+              <a href=""><i class="fa-solid fa-circle-info"></i></a>
+              <a href=""><i class="fa-solid fa-trash-can"></i></a>
+            </td>
+          </tr>
+          <% }); %>
+    </tbody>
+  </table>
+<!-- Phân trang -->
+<nav aria-label="Page navigation">
+    <ul class="pagination ">
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <!-- Thêm các trang khác vào đây -->
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+</section>

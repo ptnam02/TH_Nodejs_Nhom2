@@ -1,0 +1,23 @@
+<table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Tên</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for (const user of rows) { %>
+        <tr>
+          <td><%= user.username %></td>
+          <td><%= user.fullname %></td>
+          <td><%= user.address %></td>
+        </tr>
+      <% } %>
+      <tr>
+        <td> user.username</td>
+        <td> user.fullname</td>
+        <td> user.address</td>
+      </tr>
+    </tbody>
+  </table>

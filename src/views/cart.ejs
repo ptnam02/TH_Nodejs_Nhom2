@@ -1,0 +1,61 @@
+<section class="container mt-5">
+    <h1>Giỏ hàng</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Sản phẩm</th>
+                <th scope="col">Số lượng</th>
+                <th scope="col">Giá</th>
+                <th scope="col">Tổng cộng</th>
+            </tr>
+        </thead>
+        <tbody id="cart-items">
+            <!-- Dữ liệu sản phẩm trong giỏ hàng sẽ được hiển thị ở đây -->
+        </tbody>
+    </table>
+    <p>Tổng tiền: <span id="total-price">$0.00</span></p>
+    <button class="btn btn-primary">Thanh toán</button>
+</section>
+
+<!-- Liên kết tới JavaScript của Bootstrap 5 từ Bootstrap CDN -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
+
+<script>
+    // Mảng lưu trữ các sản phẩm trong giỏ hàng
+    const cartItems = [
+        { name: 'Sản phẩm 1', quantity: 2, price: 29.99 },
+        { name: 'Sản phẩm 2', quantity: 1, price: 19.99 },
+        // Thêm các sản phẩm khác vào đây
+    ];
+
+    // Hiển thị thông tin sản phẩm trong giỏ hàng
+    function displayCart() {
+        const cartTable = document.getElementById('cart-items');
+        let totalPrice = 0;
+
+        // Xóa dữ liệu cũ
+        while (cartTable.firstChild) {
+            cartTable.removeChild(cartTable.firstChild);
+        }
+
+        // Thêm thông tin sản phẩm vào giỏ hàng
+        cartItems.forEach((item) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${item.name}</td>
+                <td>${item.quantity}</td>
+                <td>$${item.price.toFixed(2)}</td>
+                <td>$${(item.quantity * item.price).toFixed(2)}</td>
+            `;
+            cartTable.appendChild(row);
+            totalPrice += item.quantity * item.price;
+        });
+
+        // Cập nhật tổng tiền
+        const totalPriceElement = document.getElementById('total-price');
+        totalPriceElement.textContent = `$${totalPrice.toFixed(2)}`;
+    }
+
+    // Gọi hàm để hiển thị giỏ hàng khi trang được tải
+    displayCart();
+</script>
